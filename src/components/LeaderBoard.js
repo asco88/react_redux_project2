@@ -38,10 +38,8 @@ class LeaderBoard extends Component {
                 <h3 className='center'>Leader Board</h3>
 
                 {sortedList.map(score => (
-                    <div>
-                        <div>
-                            {score.name}: {score.final} [asked: {score.asked}, answered: {score.answered}]
-                                </div>
+                    <div key={score.name}>
+                        {score.name}: {score.final} [asked: {score.asked}, answered: {score.answered}]
                     </div>
 
                 ))}

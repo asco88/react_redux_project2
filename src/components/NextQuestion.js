@@ -48,8 +48,12 @@ class NextQuestion extends Component {
         const ansOne = question ? question.optionOne.text : null;
         const ansTwo = question ? question.optionTwo.text : null;
 
+        const profileImage = user ? `../../images/${this.props.user.avatarURL}` : null;
+
+
         return (
             <div className="pricing-plan">
+                <img src={profileImage} alt="" className="pricing-img" />
                 {this.props.voted ? <VotedScreen question={question} userId={user.id} /> :
                     <div>
                         <h2 className="pricing-header">Would you rather...</h2>
@@ -73,11 +77,11 @@ function VotedScreen(props) {
         <div>
             <div>
                 {question.optionOne.votes.includes(userId) && (<div>You voted:</div>)}
-                {question.optionOne.text} - {question.optionOne.votes.length}/{totalVotes}
+                {question.optionOne.text} - {question.optionOne.votes.length}/{totalVotes}[{question.optionOne.votes.length/totalVotes*100}%]
             </div>
             <div>
                 {question.optionTwo.votes.includes(userId) && (<div>You voted:</div>)}
-                {question.optionTwo.text} - {question.optionTwo.votes.length}/{totalVotes}
+                {question.optionTwo.text} - {question.optionTwo.votes.length}/{totalVotes}[{question.optionOne.votes.length/totalVotes*100}%]
             </div>
         </div>
     )
@@ -91,7 +95,7 @@ function mapStateToProps({ authedUser, users, questions }, props) {
     return {
         user: user,
         question,
-        voted
+        voted,
     }
 }
 

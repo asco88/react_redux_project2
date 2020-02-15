@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import {setAuthedUser, unsetAuthedUser} from '../actions/authedUser'
+import { setAuthedUser, unsetAuthedUser } from '../actions/authedUser'
+import { NavLink } from 'react-router-dom'
+
 
 class Login extends Component {
     handleLogin(userId) {
@@ -17,7 +19,13 @@ class Login extends Component {
         if (authedUser) return null;
 
         return (<div>
-            {users.map(user => (<button onClick={() => this.handleLogin(user.id)}>{user.name}</button>))}
+            {users.map(user => (
+                <div key={user.id}>
+                    <NavLink onClick={() => this.handleLogin(user.id)} to='/' exact activeClassName='active'>
+                        {user.name}
+                    </NavLink>
+                </div>
+            ))}
         </div>
         )
     }

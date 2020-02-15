@@ -31,7 +31,7 @@ class NewQuestion extends Component {
         const { textOne, textTwo } = this.state
         const { dispatch, authedUser } = this.props
 
-        dispatch(handleAddQuestion({optionOneText: textOne, optionTwoText: textTwo, author: authedUser, authedUser}));
+        dispatch(handleAddQuestion({ optionOneText: textOne, optionTwoText: textTwo, author: authedUser, authedUser }));
 
         this.setState(() => ({
             textOne: '',
@@ -45,29 +45,22 @@ class NewQuestion extends Component {
             <div className="pricing-plan">
 
                 <h3 className='center'>new question</h3>
-                <form className='new-tweet' onSubmit={this.handleSubmit}>
-                    <div>
-                        Option one
-                        <input type="text"
-                            value={textOne}
-                            onChange={this.handleChangeTextOne}
-                            maxLength={280}
-                        />
-                    </div>
-                    <div>
-                        Option two
-                        <input type="text"
-                            value={textTwo}
-                            onChange={this.handleChangeTextTwo}
-                            maxLength={280}
-                        />
-                    </div>
-                    <button
-                        className='btn'
-                        type='submit'
-                        disabled={textOne === '' || textTwo === ''}>
-                        Submit
-              </button>
+
+
+                <form className="form-style-7" onSubmit={this.handleSubmit}>
+                    <ul>
+                        <li key="optionone">
+                            <input onChange={this.handleChangeTextOne} type="text" value={textOne}/>
+                            <span>Option One</span>
+                        </li>
+                        <li key="optiontwo"> 
+                            <input onChange={this.handleChangeTextTwo} type="text" value={textTwo}/>
+                            <span>Option Two</span>
+                        </li>
+                        <li key="submit">
+                            <input disabled={textOne === '' || textTwo === ''} type="submit" value="Add Question!" />
+                        </li>
+                    </ul>
                 </form>
             </div>
         );

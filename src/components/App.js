@@ -30,7 +30,7 @@ class App extends Component {
                                     <div>
                                         <Route path='/' exact component={QuestionList} />
                                         <Route path='/question/:id' component={NextQuestion} />
-                                        <Route path='/new-question' component={NewQuestion} />
+                                        <Route path='/add' component={NewQuestion} />
                                         <Route path='/leaderboard' component={LeaderBoard} />
                                         <Route path='/login' component={Login} />
                                     </div>}

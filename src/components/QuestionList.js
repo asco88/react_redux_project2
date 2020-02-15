@@ -46,7 +46,7 @@ class QuestionList extends Component {
 function List(props) {
     return (
         props.list ? props.list.map(q => (
-            <div className="pricing-features-item">
+            <div key={q.id} className="pricing-features-item">
                 <div>
                     <span>{q.author} asks:</span>
                     <Link to={`/question/${q.id}`} className='tweet'>
