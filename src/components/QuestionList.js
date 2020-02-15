@@ -1,10 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { handleInitialData } from '../actions/shared'
 import { connect } from 'react-redux'
-import LoadingBar from 'react-redux-loading'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { handleVoteAnsOne } from '../actions/questions';
-import { NavLink, Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 

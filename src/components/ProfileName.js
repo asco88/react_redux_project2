@@ -1,10 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { handleInitialData } from '../actions/shared'
 import { connect } from 'react-redux'
-import LoadingBar from 'react-redux-loading'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { handleVoteAnsOne } from '../actions/questions';
-import NextQuestion from './NextQuestion'
+
 
 class ProfileName extends Component {
 

@@ -1,7 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { handleInitialData } from '../actions/shared'
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { handleVoteAnsOne, handleVoteAnsTwo } from '../actions/questions';
 
 class NextQuestion extends Component {
@@ -85,15 +84,12 @@ function VotedScreen(props) {
 }
 
 function mapStateToProps({ authedUser, users, questions }, props) {
-    // const qList = Object.keys(questions).map(q => questions[q]);
     const user = users[authedUser];
     const question = questions[props.match.params.id];
     const voted = user && question ? question.optionOne.votes.includes(user.id) || question.optionTwo.votes.includes(user.id) : null;
 
     return {
-        // loading: authedUser === null,
         user: user,
-        // question: user ? qList.filter(q => q.author !== user.id)[0] : null
         question,
         voted
     }
