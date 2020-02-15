@@ -5,7 +5,6 @@ import { handleVoteAnsOne } from '../actions/questions';
 import { Link } from 'react-router-dom'
 
 
-
 class QuestionList extends Component {
 
     componentWillMount() {
