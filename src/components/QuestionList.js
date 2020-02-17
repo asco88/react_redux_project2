@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { handleInitialData } from '../actions/shared'
 import { connect } from 'react-redux'
 import { handleVoteAnsOne } from '../actions/questions';
-import { Link } from 'react-router-dom'
+import List from './List'
 
 
 class QuestionList extends Component {
@@ -40,21 +40,6 @@ class QuestionList extends Component {
         );
     }
 
-}
-
-function List(props) {
-    return (
-        props.list ? props.list.map(q => (
-            <div key={q.id} className="pricing-features-item">
-                <div>
-                    <span>{q.author} asks:</span>
-                    <Link to={`/question/${q.id}`} className='tweet'>
-                        vote
-                    </Link>
-                </div>
-            </div>
-        )) : null
-    )
 }
 
 function mapStateToProps({ authedUser, users, questions }) {

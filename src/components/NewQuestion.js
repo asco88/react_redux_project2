@@ -9,20 +9,23 @@ class NewQuestion extends Component {
         toHome: false,
     }
 
-    handleChangeTextOne = (e) => {
-        const textOne = e.target.value
+    handleChangedText = (e) => {
+        e.preventDefault()
+        let textOne, textTwo;
 
-        this.setState(() => ({
-            textOne
-        }))
-    }
+        if (e.target.name === 'optionA') {
+            textOne = e.target.value;
 
-    handleChangeTextTwo = (e) => {
-        const textTwo = e.target.value
+            this.setState(() => ({
+                textOne
+            }))
+        } else if (e.target.name === 'optionB') {
+            textTwo = e.target.value;
 
-        this.setState(() => ({
-            textTwo
-        }))
+            this.setState(() => ({
+                textTwo
+            }))
+        }
     }
 
     handleSubmit = (e) => {
@@ -37,6 +40,8 @@ class NewQuestion extends Component {
             textOne: '',
             textTwo: '',
         }))
+
+        this.props.history.push('/')
     }
 
     render() {
@@ -50,11 +55,11 @@ class NewQuestion extends Component {
                 <form className="form-style-7" onSubmit={this.handleSubmit}>
                     <ul>
                         <li key="optionone">
-                            <input onChange={this.handleChangeTextOne} type="text" value={textOne}/>
+                            <input onChange={(e) => this.handleChangedText(e)} name="optionA" type="text" value={textOne} />
                             <span>Option One</span>
                         </li>
-                        <li key="optiontwo"> 
-                            <input onChange={this.handleChangeTextTwo} type="text" value={textTwo}/>
+                        <li key="optiontwo">
+                            <input onChange={(e) => this.handleChangedText(e)} name="optionB" type="text" value={textTwo} />
                             <span>Option Two</span>
                         </li>
                         <li key="submit">

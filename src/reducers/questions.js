@@ -20,7 +20,7 @@ export default function users(state = {}, action) {
       question.optionTwo.votes.push(action.userid);
       return {
         ...state,
-        question
+        ...question
       }
     default:
       return state

@@ -12,7 +12,12 @@ class LeaderBoard extends Component {
         const scores = {};
 
         users.forEach(user => {
-            scores[user.id] = { name: user.name, asked: user.questions.length, answered: 0 };
+            scores[user.id] = { 
+                name: user.name, 
+                image: `../../images/${user.avatarURL}`, 
+                asked: user.questions.length, 
+                answered: 0 
+            };
         });
 
         questions.forEach(q => {
@@ -51,6 +56,7 @@ class LeaderBoard extends Component {
 
                             {sortedList.map(score => (
                                 <div className="table-row" key={score.name}>
+                                    <img src={score.image} alt="" className="pricing-img" />
                                     <div className="table-data">{score.name}</div>
                                     <div className="table-data">{score.final}</div>
                                     <div className="table-data">{score.asked}</div>
