@@ -6,6 +6,9 @@ import List from './List'
 
 
 class QuestionList extends Component {
+    state = {
+        show: 'Not Completed'
+    }
 
     componentWillMount() {
         this.props.dispatch(handleInitialData());
@@ -20,22 +23,44 @@ class QuestionList extends Component {
     }
 
     didUserVoteForQuestion(question) {
-        const {user} = this.props;
+        const { user } = this.props;
 
         return question.optionOne.votes.includes(user.id) || question.optionTwo.votes.includes(user.id)
     }
 
-    render() {
+    renderList() {
         const { questions } = this.props;
         const completed = questions.filter(q => this.didUserVoteForQuestion(q));
         const notCompleted = questions.filter(q => !this.didUserVoteForQuestion(q));
+        let list;
+
+        switch (this.state.show) {
+            case 'Completed':
+                list = completed;
+                break;
+            case 'Not Completed':
+                list = notCompleted;
+                break;
+            default:
+                list = completed;
+        }
 
         return (
+            <div>
+                <h2>{this.state.show}</h2>
+                <List list={list} />
+            </div>
+        )
+    }
+
+    render() {
+        return (
             <div className="pricing-plan">
-                <h2>Not Completed</h2>
-                <List list={notCompleted} />
-                <h2>Completed</h2>
-                <List list={completed} />
+
+                <button onClick={() => this.setState({ show: 'completed' })}>Show completed</button>
+                <button onClick={() => this.setState({ show: 'Not Completed' })}>Show not completed</button>
+
+                {this.renderList()}
             </div>
         );
     }
